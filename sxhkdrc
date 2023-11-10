@@ -4,17 +4,17 @@
 
 ##---------- Keybindings for bspwm ----------##
 
-# Terminal (xfce4)
+# Terminal (alacritty)
 super + Return
-	xfce4-terminal	
+	xfce4-terminal
 
 # Terminal (floating)
 super + shift + Return
-	xfce4-terminal --float
+	bspterm --float
 
 # Terminal (fullscreen)
 super + alt + Return
-	xfce4-terminal --full
+	bspterm --full
 
 ##---------- Rofi Launcher & Menus ----------##
 
@@ -36,6 +36,10 @@ super + {b,m,n,r,t,w,x}
 super + shift + {f,w,e}
 	{thunar,firefox,geany}
 
+# Terminal Apps
+ctrl + alt + {v,r}
+	alacritty --config-file ~/.config/bspwm/alacritty/alacritty.yml -e {vim,ranger}
+
 # Color Picker
 super + p
 	bspcolorpicker
@@ -44,14 +48,10 @@ super + p
 ctrl + alt + m
 	bspmusic
 
-# Lockscreen
-ctrl + alt + l
-    betterlockscreen --lock
-
 ##---------- System Keys ----------##
 
 # Take a screenshot
-super + Print
+Print
 	bspscreenshot --now
 	
 # Take screenshot in 5 second
@@ -89,7 +89,7 @@ XF86Audio{Next,Prev,Play,Stop}
 ##---------- Bspwm ----------##
 
 # Hide/Unhide Window
-super + shift + h
+ctrl + alt + h
 	bspwinmask
 
 # Close App
@@ -117,11 +117,11 @@ super + {_,shift + }{1-8}
 	bspc {desktop -f,node -d} '^{1-8}' '--follow'
 
 # Send focused Node to workspace directionally
-super + ctrl + shift + {Left,Right}
+super + ctrl + shift + {h,l}
 	bspc node -d {prev,next} '--follow'
 
 # Change focus of the Node or Swap Nodes
-super + {_,shift + }{Left,Down,Up,Right}
+super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # Move floating windows
@@ -129,23 +129,23 @@ super + alt + shift + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # Expanding windows
-super + control + {Left,Right,Up,Down}
+super + control + {h,l,k,j}
 	bspc node -z {left -20 0,right 20 0,top 0 -20,bottom 0 20}
 	
 # Shrinking windows
-super + alt + {Left,Right,Up,Down}
+super + alt + {h,l,k,j}
 	bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
 
 # Split horizontal, vertical or cancel
-super + {h,v}
-	bspc node -p {\~east,\~south}
+super + {v,q}
+	bspc node -p {south,cancel}
 
 # Preselect the ratio
 super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
 # Toggle Layout (Tiled/Monocle)
-super + l
+super + alt + ctrl + l
 	bspc desktop -l next
 
 # Toggle Fullscreen
@@ -172,6 +172,4 @@ alt + {_,shift + }Tab
 super + {Tab,grave}
 	bspc {node,desktop} -f last
 	
-super + e
-	bspc node '@parent' -y next
 ##---------- EOF ----------##
