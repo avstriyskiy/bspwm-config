@@ -145,7 +145,7 @@ super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
 # Toggle Layout (Tiled/Monocle)
-super + alt + ctrl + l
+alt + ctrl + l
 	bspc desktop -l next
 
 # Toggle Fullscreen
