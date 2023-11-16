@@ -35,12 +35,10 @@ BSPWM_SRATIO='0.50'
 workspaces() {
 	name=1
 	for monitor in `bspc query -M`; do
-	   if [[ $name == 1 ]]; then
-		   bspc monitor ${monitor} -d '' '' '' ''  
-		else 
-		   bspc monitor ${monitor} -d '' '' '' ''
-		fi
-		let name++
+		#bspc monitor ${monitor} -n "$name" -d '1' '2' '3' '4' '5' '6' '7' '8'
+		#bspc monitor ${monitor} -n "$name" -d 'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H'
+		#bspc monitor ${monitor} -n "$name" -d 'I' 'II' 'III' 'IV' 'V' 'VI' 'VII' 'VIII'
+		bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' '' '' ''
 	done
 }
 workspaces
@@ -84,17 +82,16 @@ declare -a comm=(Thunderbird TelegramDesktop Hexchat)
 for i in ${comm[@]}; do
    bspc rule -a $i desktop='^3' follow=on focus=on; done
 
+## 4 > terminal (always open terminal on workspace-4)
+bspc rule -a Alacritty desktop='^1' follow=on focus=on
+bspc rule -a Xfce4-terminal desktop='^4' follow=on focus=on
 
-## 4 > office and docs (always open office/doc apps on workspace-5)
+## 5 > office and docs (always open office/doc apps on workspace-5)
 declare -a office=(Gucharmap Atril Evince \
 libreoffice-writer libreoffice-calc libreoffice-impress \
 libreoffice-startcenter libreoffice Soffice *:libreofficedev *:soffice)
 for i in ${office[@]}; do
-   bspc rule -a $i desktop='^4' follow=on focus=on; done
-
-## 5 > terminal (always open terminal on workspace-1)
-bspc rule -a Alacritty desktop='^5' follow=on focus=on
-bspc rule -a Xfce4-terminal desktop='^5' follow=on focus=on
+   bspc rule -a $i desktop='^5' follow=on focus=on; done
 
 ## 6 > files (always open file manager on workspace-3)
 declare -a files=(Pcmanfm Thunar qBittorrent)
