@@ -6,15 +6,15 @@
 
 # Terminal (alacritty)
 super + Return
-	bspterm
+	alacritty
 
 # Terminal (floating)
 super + shift + Return
-	bspterm --float
+	alacritty --float
 
 # Terminal (fullscreen)
 super + alt + Return
-	bspterm --full
+	alacritty --full
 
 ##---------- Rofi Launcher & Menus ----------##
 
