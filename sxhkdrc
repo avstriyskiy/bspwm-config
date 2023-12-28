@@ -6,15 +6,15 @@
 
 # Terminal (alacritty)
 super + Return
-	bspterm
+	xfce4-terminal
 
 # Terminal (floating)
 super + shift + Return
-	bspterm --float
+	xfce4-terminal--float
 
 # Terminal (fullscreen)
 super + alt + Return
-	bspterm --full
+	xfce4-terminal --full
 
 ##---------- Rofi Launcher & Menus ----------##
 
@@ -38,7 +38,7 @@ super + shift + {f,w,e}
 
 # Terminal Apps
 ctrl + alt + {v,r}
-	alacritty --config-file ~/.config/bspwm/alacritty/alacritty.yml -e {vim,ranger}
+	xfce4-terminal -e {nvim,ranger}
 
 # Color Picker
 super + p
@@ -92,6 +92,10 @@ XF86Audio{Next,Prev,Play,Stop}
 ctrl + alt + h
 	bspwinmask
 
+# Toggle Layout (Tiled/Monocle)
+ctrl + alt + l
+	bspc desktop -l next
+ 
 # Close App
 super + {_,shift + }c
 	bspc node -{c,k}
@@ -113,7 +117,7 @@ ctrl + alt + {Left,Right}
 	bspc desktop -f {prev.local,next.local}
 
 # Switch workspace or Send focused Node to another workspace
-super + {_,shift + }{1-8}
+super + {_,shift + }{1,2,3,4,6,7,8,9}
 	bspc {desktop -f,node -d} '^{1-8}' '--follow'
 
 # Send focused Node to workspace directionally
