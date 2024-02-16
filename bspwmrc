@@ -71,7 +71,7 @@ bspc wm --adopt-orphans
 bspc rule -r *:*
 
 ## 1 > code (always open editors on workspace-4)
-declare -a code=(Geany code-oss Xfce4-terminal)
+declare -a code=(Geany code-oss alacritty)
 for i in ${code[@]}; do
    bspc rule -a $i desktop='^1' follow=on focus=on; done
 
