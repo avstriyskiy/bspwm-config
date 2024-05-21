@@ -36,7 +36,7 @@ workspaces() {
     # name=1
 	for monitor in `bspc query -M`; do
 	   # if [[ $name == 1 ]]; then
-		   bspc monitor ${monitor} -d '' '' '' '' '' '' '' ''
+		   bspc monitor ${monitor} -d '' '' '' '' '' '' '' ''
 		# else 
 		#    bspc monitor ${monitor} -d '' '' '' ''
 		# fi
@@ -71,9 +71,8 @@ bspc wm --adopt-orphans
 bspc rule -r *:*
 
 ## 1 > code (always open editors on workspace-4)
-declare -a code=(Geany code-oss alacritty)
-for i in ${code[@]}; do
-   bspc rule -a $i desktop='^1' follow=on focus=on; done
+declare -a code=(Geany code-oss xfce4-terminal)
+bspc rule -a Alacritty desktop='^1' follow=on focus=on
 
 ## 2 > web (always open web browser on workspace-2)
 bspc rule -a firefox desktop='^2' follow=on focus=on
@@ -94,7 +93,9 @@ for i in ${office[@]}; do
    bspc rule -a $i desktop='^4' follow=on focus=on; done
 
 ## 5 > terminal (always open terminal on workspace-1)
-bspc rule -a Alacritty desktop='^5' follow=on focus=on
+for i in ${code[@]}; do
+   bspc rule -a $i desktop='^5' follow=on focus=on; done
+
 # bspc rule -a Xfce4-terminal desktop='^5' follow=on focus=on
 
 ## 6 > files (always open file manager on workspace-3)
