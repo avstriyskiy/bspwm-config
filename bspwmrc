@@ -19,14 +19,14 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 ## Current theme ---------------------------------------------#
 
 ## Bspwm colors
-BSPWM_FBC='#81A1C1'
-BSPWM_NBC='#2E3440'
+BSPWM_FBC='#81A1C1' # active border
+BSPWM_NBC='#2E3440' # non-active border
 BSPWM_ABC='#B48EAD'
 BSPWM_PFC='#A3BE8C'
 
 ## Bspwm appearance
 BSPWM_BORDER='1'
-BSPWM_GAP='10'
+BSPWM_GAP='5'
 BSPWM_SRATIO='0.50'
 
 ## Configurations --------------------------------------------#
@@ -36,8 +36,9 @@ workspaces() {
     # name=1
 	for monitor in `bspc query -M`; do
 	   # if [[ $name == 1 ]]; then
-		   bspc monitor ${monitor} -d '' '' '' '' '' '' '' ''
+		   bspc monitor ${monitor} -d '' '' '' '' '' '' '' ''
 		# else 
+        #
 		#    bspc monitor ${monitor} -d '' '' '' ''
 		# fi
 		# let name++
